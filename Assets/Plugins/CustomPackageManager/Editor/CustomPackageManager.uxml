@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<engine:UXML
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:engine="UnityEngine.UIElements"
+    xmlns:editor="UnityEditor.UIElements"
+    xsi:noNamespaceSchemaLocation="../../../../../UIElementsSchema/UIElements.xsd"
+>
+
+    <engine:VisualElement name="topBar">
+        <engine:Button name="addButton" text="+"/>
+        <engine:TextField name="searchBar" style="font-size:150%"/>
+    </engine:VisualElement>
+
+    <engine:Box class="separator" style="width:auto; height: 2px;"/>
+    
+    <engine:VisualElement name="panelContainer">
+    
+        <engine:VisualElement name="leftPanel">
+
+            <engine:ListView name="listView"/>
+            
+        </engine:VisualElement>
+
+        <engine:Box class="separator" style="width:2px; height:auto;"/>
+
+        <engine:VisualElement name="rightPanel">
+            
+            <engine:VisualElement name="viewPanel">
+
+                <engine:Label name="packageName" text="Package Name"/>
+                <engine:Label name="packageInfo" text="Package Info"/>
+                
+            </engine:VisualElement>
+            
+            <engine:VisualElement name="editPanel">
+                
+                <engine:TextField name="packageNameField"></engine:TextField>
+                <engine:TextField name="packageInfoField" style="white-space: normal; --unity-text-align:upper-left"></engine:TextField>
+                <engine:TextField name="packagePathField"></engine:TextField>
+                <engine:Button name="removeButton" text="Remove"/>
+                
+            </engine:VisualElement>
+
+        </engine:VisualElement>
+
+    </engine:VisualElement>
+
+    <engine:Box class="separator" style="width:auto; height: 3px;"/>
+
+    <engine:VisualElement name="bottomBar">
+
+        <engine:Button name="refreshButton" text="↻"/>
+
+        <engine:VisualElement class="rightAlign" style="flex-direction:row;">
+
+            <engine:Button name="editButton" text="Edit"/>
+            <engine:Button name="importButton" text="Import"/>
+        
+        </engine:VisualElement>
+        
+    </engine:VisualElement>
+  
+</engine:UXML>

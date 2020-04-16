@@ -1,0 +1,61 @@
+﻿VisualElement
+{
+	background-color: rgba(18, 18, 18, 1);
+}
+
+Label
+{
+	color: rgba(255, 255, 255, 0.87);
+	font-size: 125%;
+    overflow: visible;
+    white-space: normal;
+}
+
+TextInput
+{
+	background-color: rgba(48, 48, 48, 1);
+	color: rgba(255, 255, 255, 0.87);
+	border-width: 0px;
+	--unity-cursor-color: rgba(255, 255, 255, 1);
+}
+
+.separator
+{
+	background-color: rgba(30, 30, 30, 1);
+	border-width: 0px;
+}
+
+.unity-scroller--vertical
+{
+	background-color: rgba(18, 18, 18, 1);
+	border-left-color: rgba(30, 30, 30, 1);
+	width:14px;
+}
+
+.unity-scroller--vertical .unity-base-slider__dragger
+{
+	border-color: rgba(255, 255, 255, .60);
+}
+
+.rightAlign
+{
+	position: relative;
+	right: 0px;
+	margin-left: auto;
+}
+
+Button
+{
+	background-color: rgba(39, 39, 39, 1);
+	color: rgba(255, 255, 255, 0.87);
+	font-size: 125%;
+	border-width: 2px;
+	border-color: rgba(48, 48, 48, 0);
+}
+
+Button:active
+{
+	background-color: rgba(18, 18, 18, 1);
+	border-width: 2px;
+	border-color: rgba(48, 48, 48, 1);
+}
