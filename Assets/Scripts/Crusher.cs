@@ -10,20 +10,39 @@ public class Crusher : MonoBehaviour
     public float particleTime = 0.3f;
     public AnimationCurve moveCurve;
 
+    Vector2 startPosition;
+
     float t;
     bool particlesPlayed;
 
+    bool on;
+
+    private void Awake()
+    {
+        startPosition = transform.localPosition;
+
+        t = offset;
+    }
+
     private void Update()
     {
-        float _t = (t + offset) % 1;
+        Vector2 targetPos = Vector2.Lerp(startPosition + up, startPosition + down, moveCurve.Evaluate(t));
 
-        transform.localPosition = Vector2.Lerp(down, up, moveCurve.Evaluate(_t));
-
-        if(t > particleTime && !particlesPlayed)
+        if (GameManager.inst.crushers)
         {
-            particlesPlayed = true;
-            particles.time = 0;
-            particles.Play();
+            transform.localPosition = Vector2.Lerp(transform.localPosition, startPosition + up, Time.deltaTime * 10f);
+        }
+        else
+        {
+            if (on) t = 0;
+            transform.localPosition = Vector2.Lerp(transform.localPosition, targetPos, Time.deltaTime * 20f);
+
+            if (t > particleTime && !particlesPlayed)
+            {
+                particlesPlayed = true;
+                particles.time = 0;
+                particles.Play();
+            }
         }
 
         t += Time.deltaTime * speed;
@@ -33,5 +52,7 @@ public class Crusher : MonoBehaviour
             particlesPlayed = false;
             t -= 1;
         }
+
+        on = GameManager.inst.crushers;
     }
 }
