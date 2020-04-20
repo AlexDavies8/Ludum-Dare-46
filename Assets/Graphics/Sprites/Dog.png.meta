@@ -38,6 +38,9 @@ TextureImporter:
   - first:
       213: -107298194163306661
     second: Blood_2
+  - first:
+      213: -5706010094299772137
+    second: Dog_Dead_Icon
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -364,7 +367,7 @@ TextureImporter:
         width: 3
         height: 3
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -372,6 +375,27 @@ TextureImporter:
       bones: []
       spriteID: b5fead36cdcc28ef0800000000000000
       internalID: -107298194163306661
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dog_Dead_Icon
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 71b087c0d0e20d0b0800000000000000
+      internalID: -5706010094299772137
       vertices: []
       indices: 
       edges: []

@@ -10,12 +10,14 @@ public class Crusher : MonoBehaviour
     public float particleTime = 0.3f;
     public AnimationCurve moveCurve;
 
+    public Transform tracked;
+    public float soundRangeMin = 3f;
+    public float soundRangeMax = 6f;
+
     Vector2 startPosition;
 
     float t;
     bool particlesPlayed;
-
-    bool on;
 
     private void Awake()
     {
@@ -34,7 +36,6 @@ public class Crusher : MonoBehaviour
         }
         else
         {
-            if (on) t = 0;
             transform.localPosition = Vector2.Lerp(transform.localPosition, targetPos, Time.deltaTime * 20f);
 
             if (t > particleTime && !particlesPlayed)
@@ -42,6 +43,8 @@ public class Crusher : MonoBehaviour
                 particlesPlayed = true;
                 particles.time = 0;
                 particles.Play();
+
+                SoundEffectManager.inst.PlaySound("Hit", Mathf.InverseLerp(soundRangeMax, soundRangeMin, Vector2.Distance(tracked.position, transform.position)));
             }
         }
 
@@ -52,7 +55,5 @@ public class Crusher : MonoBehaviour
             particlesPlayed = false;
             t -= 1;
         }
-
-        on = GameManager.inst.crushers;
     }
 }

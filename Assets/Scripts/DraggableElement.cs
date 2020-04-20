@@ -10,6 +10,8 @@ public class DraggableElement : MonoBehaviour, IPointerDownHandler, IPointerUpHa
     bool dragged = false;
     Vector2 offset;
 
+    Vector2 prevPos;
+
     private void Awake()
     {
         mainCamera = Camera.main;
@@ -25,6 +27,15 @@ public class DraggableElement : MonoBehaviour, IPointerDownHandler, IPointerUpHa
             dragPos.y = Mathf.Clamp(dragPos.y, moveBounds.yMin, moveBounds.yMax);
             transform.position = dragPos;
         }
+        else if (prevPos != (Vector2)transform.localPosition && prevPos != null)
+        {
+            Vector2 dragPos = transform.position;
+            dragPos.x = Mathf.Clamp(dragPos.x, moveBounds.xMin, moveBounds.xMax);
+            dragPos.y = Mathf.Clamp(dragPos.y, moveBounds.yMin, moveBounds.yMax);
+            transform.position = dragPos;
+        }
+
+        prevPos = transform.position;
     }
 
     public void OnPointerDown(PointerEventData eventData)

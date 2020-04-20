@@ -9,12 +9,24 @@ public class LiftTrigger : MonoBehaviour
     public float doorTime = 1f;
     public AnimationCurve curve;
 
-    public Transform start;
-    public Transform end;
+    public Transform up;
+    public Transform down;
+
+    public bool startUp = true;
+
+    public LiftTrigger[] sync;
+    public LiftTrigger[] syncInverse;
+
+    Transform start, end;
 
     public Transform doorTransform;
 
     public Vector2 dogOffset;
+
+    private void Awake()
+    {
+        UpdateState();
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -68,10 +80,36 @@ public class LiftTrigger : MonoBehaviour
         controller.SetAnimation("Dog_Walk");
         controller.stopped = false;
 
-        Transform temp = start;
-        start = end;
-        end = temp;
+        startUp = !startUp;
+        UpdateState();
+
+        foreach (var lift in sync)
+            lift.SyncState(startUp);
+        foreach (var lift in syncInverse)
+            lift.SyncState(!startUp);
 
         controller.direction = Random.Range(0f, 1f) > 0.5f ? 1 : -1;
+    }
+
+    void UpdateState()
+    {
+        if (startUp)
+        {
+            start = up;
+            end = down;
+        }
+        else
+        {
+            end = up;
+            start = down;
+        }
+    }
+
+    public void SyncState(bool isUp)
+    {
+        startUp = isUp;
+        UpdateState();
+
+        transform.position = start.position;
     }
 }

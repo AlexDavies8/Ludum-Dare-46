@@ -27,6 +27,8 @@ public class AirPump : MonoBehaviour
 
     float level = 0f;
 
+    bool danger;
+
     private void Awake()
     {
         level = emptyThreshold;
@@ -50,10 +52,13 @@ public class AirPump : MonoBehaviour
         if (level < emptyThreshold || level > fullThreshold)
         {
             fillImage.color = dangerColour;
+            if (danger == false) SoundEffectManager.inst.PlaySound("Warning", 1f);
+            danger = true;
         }
         else
         {
             fillImage.color = Color.white;
+            danger = false;
         }
 
         level += direction * fillRate * Time.deltaTime * GameManager.inst.globalSpeed;
@@ -62,12 +67,12 @@ public class AirPump : MonoBehaviour
 
         if (level < minLevel)
         {
-            dogController.Implode();
+            dogController.Explode();
         }
 
         if (level > maxLevel)
         {
-            dogController.Explode();
+            dogController.Implode();
         }
     }
 

@@ -77,6 +77,21 @@ TextureImporter:
   - first:
       213: 2944365851237661629
     second: Barbed_Wire
+  - first:
+      213: -5657638837081271512
+    second: Floor_Bottom
+  - first:
+      213: 6920345975239967579
+    second: Floor_Bottom_Right
+  - first:
+      213: 282221998945554122
+    second: Floor_Bottom_Left
+  - first:
+      213: 60988148198265307
+    second: Background
+  - first:
+      213: -8130801157778517720
+    second: SpaceSign
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -173,7 +188,7 @@ TextureImporter:
         height: 17
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      border: {x: 7, y: 5, z: 7, w: 4}
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -425,7 +440,7 @@ TextureImporter:
         height: 17
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      border: {x: 6, y: 6, z: 6, w: 6}
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -684,6 +699,111 @@ TextureImporter:
       bones: []
       spriteID: dbbbfcb442d7cd820800000000000000
       internalID: 2944365851237661629
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilesheet_0
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 26
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 823115004770c71b0800000000000000
+      internalID: -5657638837081271512
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Floor_Bottom_Right
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 26
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b538bf8bff10a0060800000000000000
+      internalID: 6920345975239967579
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Floor_Bottom_Left
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 26
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ace43faa967aae300800000000000000
+      internalID: 282221998945554122
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Background
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 9
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bd1dddcc56ca8d000800000000000000
+      internalID: 60988148198265307
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpaceSign
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 5
+        width: 30
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 821d6430d67992f80800000000000000
+      internalID: -8130801157778517720
       vertices: []
       indices: 
       edges: []

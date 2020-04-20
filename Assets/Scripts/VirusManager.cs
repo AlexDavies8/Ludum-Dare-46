@@ -10,7 +10,7 @@ public class VirusManager : MonoBehaviour
 
     public void ActivateVirus()
     {
-        SpawnWindows(Random.Range(4, 8));
+        SpawnWindows(Random.Range(3, 5));
     }
 
     public void SpawnWindows(int count)
@@ -28,7 +28,8 @@ public class VirusManager : MonoBehaviour
 
     IEnumerator SpawnWindowCoroutine(int i)
     {
-        yield return new WaitForSeconds(interval * i);
+        if (i == 0) yield return null;
+        else yield return new WaitForSeconds(interval * i);
 
         Vector2 spawnPos = new Vector2(Random.Range(min.x, max.x), Random.Range(min.y, max.y));
         int prefabIndex = Random.Range(0, virusPrefabs.Length);

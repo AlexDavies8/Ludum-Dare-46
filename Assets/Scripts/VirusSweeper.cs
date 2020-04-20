@@ -21,10 +21,11 @@ public class VirusSweeper : MonoBehaviour
 
     bool firstMove;
 
+    bool playing = true;
+
     private void Awake()
     {
-        timer = 1;
-        GenerateBoard();
+        ResetBoard();
     }
 
     private void Update()
@@ -197,23 +198,37 @@ public class VirusSweeper : MonoBehaviour
 
     void Lose()
     {
+        if (!playing) return;
+        playing = false;
+
         GameManager.inst.RandomEvent();
 
         fillImage.color = Color.red;
-        StartCoroutine(ResetCoroutine());
+        StartCoroutine(LoseCoroutine());
     }
 
     void Win()
     {
+        if (!playing) return;
+        playing = false;
+
         fillImage.color = Color.green;
-        StartCoroutine(ResetCoroutine());
+        StartCoroutine(WinCoroutine());
     }
 
-    IEnumerator ResetCoroutine()
+    IEnumerator WinCoroutine()
     {
         yield return new WaitForSeconds(1f);
 
         fillImage.color = Color.white;
-        ResetBoard();
+        GameManager.inst.MinigameWon();
+    }
+
+    IEnumerator LoseCoroutine()
+    {
+        yield return new WaitForSeconds(1f);
+
+        fillImage.color = Color.white;
+        GameManager.inst.MinigameLost();
     }
 }

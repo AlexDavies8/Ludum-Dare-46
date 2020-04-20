@@ -13,6 +13,8 @@ public class DogController : MonoBehaviour
     public float explodeScale = 1.5f;
     public float implodeScale = 0.7f;
 
+    public CameraShake cameraShake;
+
     Rigidbody2D rb;
 
     public bool stopped;
@@ -50,9 +52,9 @@ public class DogController : MonoBehaviour
         animator.speed = GameManager.inst.globalSpeed;
     }
 
-    public void SetAnimation(string id)
+    public void SetAnimation(string id, bool ignoreDead = false)
     {
-        animator.Play(id, 0);
+        if (!dead || ignoreDead) animator.Play(id, 0);
     }
 
     public void Die(bool ignoreDead = false)
@@ -60,12 +62,16 @@ public class DogController : MonoBehaviour
         if (dead && !ignoreDead) return;
 
         dead = true;
-        SetAnimation("Dog_Dead");
+        SetAnimation("Dog_Dead", true);
         deadParticles.Play();
         stopped = true;
 
         rb.velocity = Vector2.zero;
         rb.isKinematic = true;
+
+        cameraShake.trauma = 1f;
+
+        SoundEffectManager.inst.PlaySound("Die");
 
         Destroy(this);
     }
@@ -81,17 +87,19 @@ public class DogController : MonoBehaviour
         dead = true;
         stopped = true;
         SetAnimation("Dog_Idle");
+
+        SoundEffectManager.inst.PlaySound("Stretch");
+
         Vector3 startScale = transform.localScale;
         Vector3 endScale = transform.localScale * explodeScale;
-        Vector2 startPos = transform.localPosition;
         endScale.z = startScale.z;
         for (float t = 0; t < 1f; t += Time.deltaTime * 1.5f)
         {
             transform.localScale = Vector3.Lerp(startScale, endScale, t);
-            transform.localPosition = startPos - (Vector2.one - (Vector2)transform.localScale) * 0.5f;
             yield return null;
         }
         transform.localScale = startScale;
+        GameManager.inst.Die("Your dog exploded!");
         Die(true);
     }
 
@@ -106,17 +114,19 @@ public class DogController : MonoBehaviour
         dead = true;
         stopped = true;
         SetAnimation("Dog_Idle");
+
+        SoundEffectManager.inst.PlaySound("Stretch");
+        
         Vector3 startScale = transform.localScale;
         Vector3 endScale = transform.localScale * implodeScale;
-        Vector2 startPos = transform.localPosition;
         endScale.z = startScale.z;
         for (float t = 0; t < 1f; t += Time.deltaTime * 1.5f)
         {
             transform.localScale = Vector3.Lerp(startScale, endScale, t);
-            transform.localPosition = startPos - (Vector2.one - (Vector2)transform.localScale) * 0.5f;
             yield return null;
         }
         transform.localScale = startScale;
+        GameManager.inst.Die("Your dog imploded!");
         Die(true);
     }
 }
